@@ -97,7 +97,7 @@
 
 - (void)closePopoverScrollImagePlayer
 {
-	LOG_CURRENT_METHOD;
+	//LOG_CURRENT_METHOD;
 	[self.view removeFromSuperview];
 	[self repositionParentScrollView];
 }
@@ -144,7 +144,7 @@
 
 - (void)toggleZoom:(UITapGestureRecognizer*)gesture
 {
-	LOG_CURRENT_METHOD;
+	//LOG_CURRENT_METHOD;
 	CGPoint touchedPoint;
 	touchedPoint = [gesture locationInView:imageView];
 	if (scrollView.zoomScale <= scrollView.minimumZoomScale) {
