@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class SKBEngineViewController;
+@class SKBE_MainViewController;
 
 @interface SKBEngineAppDelegate : NSObject <UIApplicationDelegate> {
 
@@ -16,6 +16,6 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) IBOutlet SKBEngineViewController *viewController;
+@property (nonatomic, retain) IBOutlet SKBE_MainViewController *viewController;
 
 @end
