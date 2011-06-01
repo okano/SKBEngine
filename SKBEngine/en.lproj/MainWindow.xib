@@ -147,7 +147,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>SKBE_MainViewController</string>
+					<string>SKBE_MainVC</string>
 					<string>{{234, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{525, 346}, {320, 480}}</string>
@@ -178,7 +178,7 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">SKBE_MainViewController</string>
+					<string key="className">SKBE_MainVC</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
@@ -197,7 +197,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>SKBE_MainViewController</string>
+							<string>SKBE_MainVC</string>
 							<string>UIWindow</string>
 						</object>
 					</object>
@@ -212,7 +212,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">viewController</string>
-								<string key="candidateClassName">SKBE_MainViewController</string>
+								<string key="candidateClassName">SKBE_MainVC</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>

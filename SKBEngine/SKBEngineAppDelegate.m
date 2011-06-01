@@ -8,7 +8,7 @@
 
 #import "SKBEngineAppDelegate.h"
 
-#import "SKBE_MainViewController.h"
+#import "SKBE_MainVC.h"
 
 @implementation SKBEngineAppDelegate
 

@@ -15,7 +15,7 @@
 		29F90D37136298DA00544C1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F90D36136298DA00544C1A /* main.m */; };
 		29F90D3A136298DA00544C1A /* SKBEngineAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F90D39136298DA00544C1A /* SKBEngineAppDelegate.m */; };
 		29F90D3D136298DA00544C1A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29F90D3B136298DA00544C1A /* MainWindow.xib */; };
-		29F90D40136298DA00544C1A /* SKBE_MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F90D3F136298DA00544C1A /* SKBE_MainViewController.m */; };
+		29F90D40136298DA00544C1A /* SKBE_MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F90D3F136298DA00544C1A /* SKBE_MainVC.m */; };
 		29F90D43136298DA00544C1A /* SKBEngineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29F90D41136298DA00544C1A /* SKBEngineViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +33,8 @@
 		29F90D38136298DA00544C1A /* SKBEngineAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKBEngineAppDelegate.h; sourceTree = "<group>"; };
 		29F90D39136298DA00544C1A /* SKBEngineAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBEngineAppDelegate.m; sourceTree = "<group>"; };
 		29F90D3C136298DA00544C1A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		29F90D3E136298DA00544C1A /* SKBE_MainViewController.h */ = {isa = PBXFileReference; path = SKBE_MainViewController.h; sourceTree = "<group>"; };
-		29F90D3F136298DA00544C1A /* SKBE_MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBE_MainViewController.m; sourceTree = "<group>"; };
+		29F90D3E136298DA00544C1A /* SKBE_MainVC.h */ = {isa = PBXFileReference; path = SKBE_MainVC.h; sourceTree = "<group>"; };
+		29F90D3F136298DA00544C1A /* SKBE_MainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKBE_MainVC.m; sourceTree = "<group>"; };
 		29F90D42136298DA00544C1A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SKBEngineViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,8 +85,8 @@
 				29F90D38136298DA00544C1A /* SKBEngineAppDelegate.h */,
 				29F90D39136298DA00544C1A /* SKBEngineAppDelegate.m */,
 				29F90D3B136298DA00544C1A /* MainWindow.xib */,
-				29F90D3E136298DA00544C1A /* SKBE_MainViewController.h */,
-				29F90D3F136298DA00544C1A /* SKBE_MainViewController.m */,
+				29F90D3E136298DA00544C1A /* SKBE_MainVC.h */,
+				29F90D3F136298DA00544C1A /* SKBE_MainVC.m */,
 				29F90D41136298DA00544C1A /* SKBEngineViewController.xib */,
 				29F90D30136298DA00544C1A /* Supporting Files */,
 				297A104A1362C3F6002D0F5C /* SKBEngine_PopoverScrollImageViewController.h */,
@@ -168,7 +168,7 @@
 			files = (
 				29F90D37136298DA00544C1A /* main.m in Sources */,
 				29F90D3A136298DA00544C1A /* SKBEngineAppDelegate.m in Sources */,
-				29F90D40136298DA00544C1A /* SKBE_MainViewController.m in Sources */,
+				29F90D40136298DA00544C1A /* SKBE_MainVC.m in Sources */,
 				297A104C1362C3F6002D0F5C /* SKBEngine_PopoverScrollImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
