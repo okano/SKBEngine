@@ -47,5 +47,6 @@
 - (void)cleanupSubviews;
 - (void)resetScrollView;
 //Treat subview.
+- (void)addScalableSubview:(UIView *)view withPdfBasedFrame:(CGRect)pdfBasedFrame;
 - (void)addScalableSubview:(UIView *)view withNormalizedFrame:(CGRect)normalizedFrame;
 @end

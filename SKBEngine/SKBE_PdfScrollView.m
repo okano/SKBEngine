@@ -192,6 +192,85 @@
 #pragma mark -
 #pragma mark Treat subview.
 // Add subview.(movieLink, UrlLink, inPageScrollView, ...)
+// (for SakuttoBook)
+- (void)addScalableSubview:(UIView *)view withPdfBasedFrame:(CGRect)pdfBasedFrame {
+	//LOG_CURRENT_METHOD;
+	//NSLog(@"pdfBasedFrame=%@", NSStringFromCGRect(pdfBasedFrame));
+	//NSLog(@"self.zoomScale=%f", self.zoomScale);
+	//NSLog(@"scaleForDraw=%f", scaleForDraw);
+	
+	CGRect rect;
+	if ([view isKindOfClass:[UIScrollView class]] == YES) {
+		rect.origin.x = pdfBasedFrame.origin.x * scaleForDraw;
+		rect.origin.y = pdfBasedFrame.origin.y * scaleForDraw;
+		//do not change width, height.
+		rect.size = pdfBasedFrame.size;
+		//do not change contentSize in UIScrollView.
+		
+		//UIScrollView* sv = (UIScrollView*)view;
+		//CGSize size = CGSizeMake(sv.contentSize.width * scaleForDraw,
+		//						 sv.contentSize.height * scaleForDraw);
+		//sv.contentSize = size;
+		//NSLog(@"contentSize = %f,%f", sv.contentSize.width, sv.contentSize.height);
+		//NSLog(@"has %d subviews", [sv.subviews count]);
+	} else {
+		//NSLog(@"pdfImageTmp.size=%@", NSStringFromCGSize(pdfImageTmp.size));
+		//NSLog(@"self.frame.size=%@", NSStringFromCGSize(self.frame.size));
+		
+		/*
+		 //
+		 CGFloat myscale;
+		 if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+		 myscale = [[UIScreen mainScreen] scale];
+		 } else {
+		 myscale = 2.0f;
+		 }
+		 */
+		
+		CGFloat scaleToFitWidthByImage;
+		if (self.originalPageWidth < CACHE_IMAGE_WIDTH_MIN) {
+			scaleToFitWidthByImage = CACHE_IMAGE_WIDTH_MIN / originalPageWidth;
+		} else {
+			scaleToFitWidthByImage = 1.0f;
+		}
+		
+		rect = CGRectMake(pdfBasedFrame.origin.x * scaleToFitWidthByImage,
+						  pdfBasedFrame.origin.y * scaleToFitWidthByImage,
+						  pdfBasedFrame.size.width * scaleToFitWidthByImage,
+						  pdfBasedFrame.size.height * scaleToFitWidthByImage);
+		
+		/*
+		 if (1.0f < scaleForDraw) {
+		 //Original PDF size < Screen.
+		 rect.origin.x = pdfBasedFrame.origin.x * scaleForDraw * myscale;
+		 rect.origin.y = pdfBasedFrame.origin.y * scaleForDraw * myscale;
+		 rect.size.width = pdfBasedFrame.size.width * scaleForDraw * myscale;
+		 rect.size.height = pdfBasedFrame.size.height * scaleForDraw * myscale;
+		 } else {
+		 //Screen < Original PDF size.
+		 //rect = pdfBasedFrame;
+		 //rect = CGRectMake(pdfBasedFrame.origin.x * scaleForDraw * myscale,
+		 //				  pdfBasedFrame.origin.y * scaleForDraw * myscale,
+		 //				  pdfBasedFrame.size.width * scaleForDraw * myscale,
+		 //				  pdfBasedFrame.size.height * scaleForDraw * myscale);
+		 rect = pdfBasedFrame;
+		 }
+		 */
+	}
+	
+	//debug area for Large PDF.
+	//rect = CGRectMake(10.0f, 10.0f, 360.0f, 288.0f);
+	//debug area for Small PDF.
+	//rect = CGRectMake( 5.0f,  5.0f,  70.0f, 106.0f);
+	
+	view.frame = rect;
+	//NSLog(@"draw %@ view. frame=%@", [view class], NSStringFromCGRect(rect));
+	
+	[pageImageView addSubview:view];
+}
+
+// Add subview.(movieLink, UrlLink, inPageScrollView, ...)
+// (for JPPBook)
 - (void)addScalableSubview:(UIView *)view withNormalizedFrame:(CGRect)normalizedFrame {
 	//LOG_CURRENT_METHOD;
 	//NSLog(@"self.zoomScale=%f", self.zoomScale);
