@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SKBE_Utility.h"
 
+#define CACHE_IMAGE_WIDTH_MIN		640.0f
+
 @interface SKBE_PdfScrollView : UIScrollView <UIScrollViewDelegate> {
 	//View for zooming.
 	UIImageView* pageImageView;
