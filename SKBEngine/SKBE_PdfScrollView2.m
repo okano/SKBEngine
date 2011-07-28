@@ -10,5 +10,48 @@
 
 
 @implementation SKBE_PdfScrollView2
+@synthesize pageImageView;
+@synthesize pdfImageTmp;
+@synthesize scaleForDraw, scaleForCache;
+@synthesize originalPageSize;
+
+- (void)addScalableColorView:(UIColor*)color alpha:(CGFloat)alpha withPdfBasedFrame:(CGRect)pdfBasedFrame
+{
+	CGRect rect;
+	
+	UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+	if (interfaceOrientation == UIInterfaceOrientationPortrait
+		||
+		interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+		rect.origin.x    = pdfBasedFrame.origin.x    * scaleForCache;
+		rect.origin.y    = pdfBasedFrame.origin.y    * scaleForCache;
+		rect.size.width  = pdfBasedFrame.size.width  * scaleForCache;
+		rect.size.height = pdfBasedFrame.size.height * scaleForCache;	
+	} else {
+		rect.origin.x    = pdfBasedFrame.origin.x    * scaleForCache / (1024.0f / 768.0f);
+		rect.origin.y    = pdfBasedFrame.origin.y    * scaleForCache / (1024.0f / 768.0f);
+		rect.size.width  = pdfBasedFrame.size.width  * scaleForCache / (1024.0f / 768.0f);
+		rect.size.height = pdfBasedFrame.size.height * scaleForCache / (1024.0f / 768.0f);	
+	}
+	NSLog(@"pdfBasedFrame=%@", NSStringFromCGRect(pdfBasedFrame));
+	NSLog(@"scaleForDraw=%f, scaleForCache=%f", scaleForDraw, scaleForCache);
+	NSLog(@"scaledFrame=%@", NSStringFromCGRect(rect));
+	
+	UIView* view = [[UIView alloc] initWithFrame:rect];
+	[view setBackgroundColor:color];
+	[view setAlpha:alpha];
+	
+	[pageImageView addSubview:view];
+	
+	NSLog(@"pdfImageTmp.size=%@", NSStringFromCGSize(pdfImageTmp.size));
+}
+
+
+#pragma mark -
+#pragma mark Handle Rotate.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	LOG_CURRENT_METHOD;
+	return YES;
+}
 
 @end
