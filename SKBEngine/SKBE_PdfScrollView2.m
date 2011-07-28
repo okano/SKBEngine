@@ -19,20 +19,13 @@
 {
 	CGRect rect;
 	
-	UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-	if (interfaceOrientation == UIInterfaceOrientationPortrait
-		||
-		interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-		rect.origin.x    = pdfBasedFrame.origin.x    * scaleForCache;
-		rect.origin.y    = pdfBasedFrame.origin.y    * scaleForCache;
-		rect.size.width  = pdfBasedFrame.size.width  * scaleForCache;
-		rect.size.height = pdfBasedFrame.size.height * scaleForCache;	
-	} else {
-		rect.origin.x    = pdfBasedFrame.origin.x    * scaleForCache / (1024.0f / 768.0f);
-		rect.origin.y    = pdfBasedFrame.origin.y    * scaleForCache / (1024.0f / 768.0f);
-		rect.size.width  = pdfBasedFrame.size.width  * scaleForCache / (1024.0f / 768.0f);
-		rect.size.height = pdfBasedFrame.size.height * scaleForCache / (1024.0f / 768.0f);	
-	}
+	//UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+	//No use orientation.
+
+	rect.origin.x    = pdfBasedFrame.origin.x    * scaleForCache;
+	rect.origin.y    = pdfBasedFrame.origin.y    * scaleForCache;
+	rect.size.width  = pdfBasedFrame.size.width  * scaleForCache;
+	rect.size.height = pdfBasedFrame.size.height * scaleForCache;	
 	NSLog(@"pdfBasedFrame=%@", NSStringFromCGRect(pdfBasedFrame));
 	NSLog(@"scaleForDraw=%f, scaleForCache=%f", scaleForDraw, scaleForCache);
 	NSLog(@"scaledFrame=%@", NSStringFromCGRect(rect));
