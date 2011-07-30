@@ -40,6 +40,27 @@
 }
 
 
+- (void)addScalableSubview2:(UIView *)view withPdfBasedFrame:(CGRect)pdfBasedFrame
+{
+	CGRect rect;
+	//No use orientation.
+	
+	rect.origin.x    = pdfBasedFrame.origin.x    * scaleForCache;
+	rect.origin.y    = pdfBasedFrame.origin.y    * scaleForCache;
+	rect.size.width  = pdfBasedFrame.size.width  * scaleForCache;
+	rect.size.height = pdfBasedFrame.size.height * scaleForCache;	
+	NSLog(@"pdfBasedFrame=%@", NSStringFromCGRect(pdfBasedFrame));
+	NSLog(@"scaleForDraw=%f, scaleForCache=%f", scaleForDraw, scaleForCache);
+	NSLog(@"scaledFrame=%@", NSStringFromCGRect(rect));
+	
+	view.frame = rect;
+	//NSLog(@"scaledFrame=%@", NSStringFromCGRect(rect));
+	
+	[pageImageView addSubview:view];
+}
+
+
+
 #pragma mark -
 #pragma mark Handle Rotate.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
