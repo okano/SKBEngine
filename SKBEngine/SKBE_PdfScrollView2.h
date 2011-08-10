@@ -36,4 +36,11 @@
 
 - (void)addScalableColorView:(UIColor*)color alpha:(CGFloat)alpha withPdfBasedFrame:(CGRect)pdfBasedFrame;
 - (void)addScalableSubview2:(UIView *)view withPdfBasedFrame:(CGRect)pdfBasedFrame;
+
+- (void)addScalableScrollView:(NSArray*)images
+			withPdfBasedFrame:(CGRect)pdfBasedFrame
+			  backgroundColor:(UIColor*)bgColor
+  scrollIndicatorInsetsString:(NSString*)indicatorInsetStr
+		flashScrollIndicators:(BOOL)flag;
+
 @end

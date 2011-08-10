@@ -40,6 +40,89 @@
 }
 
 
+- (void)addScalableScrollView:(NSArray*)images
+			withPdfBasedFrame:(CGRect)pdfBasedFrame
+			  backgroundColor:(UIColor*)bgColor
+  scrollIndicatorInsetsString:(NSString*)indicatorInsetStr
+		flashScrollIndicators:(BOOL)flag
+{
+	CGRect rect;
+	rect.origin.x    = pdfBasedFrame.origin.x    * scaleForCache;
+	rect.origin.y    = pdfBasedFrame.origin.y    * scaleForCache;
+	rect.size.width  = pdfBasedFrame.size.width  * scaleForCache;
+	rect.size.height = pdfBasedFrame.size.height * scaleForCache;
+	//NSLog(@"pdfBasedFrame=%@", NSStringFromCGRect(pdfBasedFrame));
+	//NSLog(@"scaleForDraw=%f, scaleForCache=%f", scaleForDraw, scaleForCache);
+	//NSLog(@"scaledFrame=%@", NSStringFromCGRect(rect));
+	
+	
+	//Show ScrollView.
+	UIScrollView* ipsvScrollView = [[UIScrollView alloc] initWithFrame:rect];
+	ipsvScrollView.backgroundColor = bgColor;
+	ipsvScrollView.pagingEnabled = YES;
+	ipsvScrollView.bounces = NO;
+	ipsvScrollView.alwaysBounceVertical = NO;
+	ipsvScrollView.alwaysBounceHorizontal = YES;
+	ipsvScrollView.scrollIndicatorInsets = UIEdgeInsetsFromString(indicatorInsetStr);
+	ipsvScrollView.userInteractionEnabled = YES;
+	ipsvScrollView.delegate = self;
+	float x_space = 0.0f;
+	float x_offset = 0 + x_space;
+	float y_space = 0.0f;
+	float y_maxHeight = 0.0f;
+	for (UIImage* image in images) {
+		//Add each image.
+		if (!image) {
+			NSLog(@"image is nil.");
+			continue;	//next image.
+		}
+		
+		
+		//Add white-space under ScrollBar.
+		CGFloat scrollBarInsetMinus = 10.0f;
+		
+		//fit to ScrollView-Height.
+		CGFloat scaleWithHeight = (rect.size.height - scrollBarInsetMinus) / image.size.width;	//scale for fit Height with ScrollView.
+		
+		//Streatch images when Landscape mode.
+		CGRect rectForStretchImage = CGRectMake(0.0f,
+												0.0f,
+												image.size.width  * scaleWithHeight,
+												image.size.height * scaleWithHeight);
+		UIGraphicsBeginImageContextWithOptions(rectForStretchImage.size, NO, 0.0f);
+		[image drawInRect:rectForStretchImage];
+		UIImage* shrinkedImage = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+		[image release];
+		image = shrinkedImage;
+		
+		
+		
+		//Add with UIImageView.
+		UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+		CGRect rectForImageView = imageView.frame;
+		rectForImageView.origin.x = x_offset;
+		rectForImageView.origin.y = y_space;
+		imageView.frame = rectForImageView;
+		[imageView retain];
+		
+		//Add images to ScrollView.
+		[ipsvScrollView addSubview:imageView];
+		
+		//move offset.
+		x_offset = x_offset + image.size.width + x_space;
+		if (y_maxHeight < image.size.height) {
+			y_maxHeight = image.size.height;
+		}
+		
+	}
+	ipsvScrollView.contentSize = CGSizeMake(x_offset, y_maxHeight);
+	
+	[pageImageView addSubview:ipsvScrollView];
+	
+	[ipsvScrollView flashScrollIndicators];
+}
+
 - (void)addScalableSubview2:(UIView *)view withPdfBasedFrame:(CGRect)pdfBasedFrame
 {
 	CGRect rect;
