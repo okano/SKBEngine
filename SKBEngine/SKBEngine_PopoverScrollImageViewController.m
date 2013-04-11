@@ -18,7 +18,9 @@
 
 - (id)initWithImageFilename:(NSString*)filename frame:(CGRect)frame
 {
-	[super init];
+	self = [super init];
+    if (self)
+	{
 	
 	NSString* path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
 	if (!path) {
@@ -43,7 +45,7 @@
 		scrollView.delegate = self;
 		scrollView.contentSize = imageView.frame.size;
 		scrollView.backgroundColor = [UIColor whiteColor];
-		scrollView.backgroundColor = [[UIColor alloc] initWithRed:0.5f
+		scrollView.backgroundColor = [UIColor colorWithRed:0.5f
 															green:0.5f
 															 blue:0.5f
 															alpha:0.8f];
@@ -75,6 +77,7 @@
 		[tapGestureForPopoverScrollImage requireGestureRecognizerToFail:doubleTapGestureForPopoverScrollImage];
 		
 		[self.view addSubview:scrollView];
+	}
 	}
 	return self;
 }
