@@ -20,7 +20,8 @@
 {
 	[super init];
 	
-	NSString* path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
+	NSString* path = filename;
+	//NSString* path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
 	if (!path) {
 		NSLog(@"illigal filename. filename=%@, bundle_resourceURL=%@", filename, [[NSBundle mainBundle] resourceURL]);
 		NSLog(@"f = %@ %@", [filename stringByDeletingPathExtension], [filename pathExtension]);
